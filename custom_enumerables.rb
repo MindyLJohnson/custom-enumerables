@@ -14,4 +14,13 @@ module Enumerable
       yield self[index], index
     end
   end
+
+  def my_select(&block)
+    return to_enum(:my_select) unless block_given?
+
+    arr = []
+
+    self.my_each { |item| arr << item if block.call(item)}
+    arr
+  end
 end
