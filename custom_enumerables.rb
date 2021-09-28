@@ -1,5 +1,7 @@
 module Enumerable
   def my_each
-    yield
+    for item in self
+      yield item
+    end
   end
 end
