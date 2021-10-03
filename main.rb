@@ -20,3 +20,17 @@ puts "\nmy_select"
 puts numbers.my_select  { |item| item.even? }
 puts "\nselect"
 puts numbers.select  { |item| item.even? }
+
+puts "\n>>my_all? vs. all?"
+numbers = [2, 4, 6, 8, 10]
+puts "\nmy_all?"
+puts numbers.my_all?  { |item| item.even? }
+puts "\nall?"
+puts numbers.all?  { |item| item.even? }
+
+puts "\n>>my_none? vs. none?"
+numbers = [2, 4, 6, 8, 10]
+puts "\nmy_none?"
+puts numbers.my_none?  { |item| item.even? }
+puts "\nnone?"
+puts numbers.none?  { |item| item.even? }

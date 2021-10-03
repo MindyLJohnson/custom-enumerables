@@ -19,8 +19,16 @@ module Enumerable
     return to_enum(:my_select) unless block_given?
 
     arr = []
-
-    self.my_each { |item| arr << item if block.call(item)}
+    self.my_each { |item| arr << item if block.call(item) }
     arr
+  end
+
+  def my_all?(&block)
+    return to_enum(:my_all?) unless block_given?
+
+    arr = []
+    self.my_each { |item| arr << item if block.call(item) }
+
+    arr == self
   end
 end
