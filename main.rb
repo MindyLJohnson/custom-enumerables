@@ -26,9 +26,11 @@ numbers = [2, 4, 6, 8, 10]
 puts "\nmy_all?"
 puts numbers.my_all?  { |item| item.even? }
 puts numbers.my_all?(Integer)
+puts numbers.my_all?
 puts "\nall?"
 puts numbers.all?  { |item| item.even? }
 puts numbers.all?(Integer)
+puts numbers.all?
 
 puts "\n>>my_none? vs. none?"
 numbers = [1, 3, 5, 7, 9]
@@ -42,6 +44,8 @@ numbers = [1, 2, 2, 4, 5]
 puts "\nmy_count"
 puts numbers.my_count  { |item| item.even? }
 puts numbers.my_count(2)
+puts numbers.my_count
 puts "\ncount"
 puts numbers.count  { |item| item.even? }
 puts numbers.count(2)
+puts numbers.count
