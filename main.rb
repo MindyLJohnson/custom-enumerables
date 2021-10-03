@@ -73,3 +73,10 @@ puts numbers.inject  { |sum, item| sum + item }
 puts numbers.inject(10)  { |sum, item| sum + item }
 puts numbers.inject(:+)
 puts numbers.inject(10, :+)
+
+puts "\n>>Multiply Elements Using my_inject"
+numbers = [1, 2, 2, 4, 5]
+puts "\nmultiply_els"
+puts numbers.multiply_els
+puts "\ninject"
+puts numbers.inject(:*)

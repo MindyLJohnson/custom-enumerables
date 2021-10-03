@@ -70,4 +70,8 @@ module Enumerable
 
     acc
   end
+
+  def multiply_els
+    self.my_inject(:*)
+  end
 end
