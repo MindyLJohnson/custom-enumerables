@@ -35,3 +35,11 @@ puts numbers.my_none?  { |item| item.even? }
 puts "\nnone?"
 puts numbers.none?  { |item| item.even? }
 
+puts "\n>>my_count vs. count"
+numbers = [1, 2, 2, 4, 5]
+puts "\nmy_count"
+puts numbers.my_count  { |item| item.even? }
+puts numbers.my_count(2)
+puts "\ncount"
+puts numbers.count  { |item| item.even? }
+puts numbers.count(2)

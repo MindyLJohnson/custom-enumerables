@@ -38,4 +38,13 @@ module Enumerable
     self.my_each { |item| arr << item if block.call(item) }
     arr.length == 0
   end
+
+  def my_count(obj=nil, &block)
+    return self.length if !block_given? && obj.nil?
+
+    arr = []
+    self.my_each { |item| arr << item if item == obj } unless obj.nil?
+    self.my_each { |item| arr << item if block.call(item) } if block_given?
+    arr.length
+  end
 end
