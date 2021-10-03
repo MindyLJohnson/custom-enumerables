@@ -56,10 +56,13 @@ puts numbers.count
 
 puts "\n>>my_map vs. map"
 numbers = [1, 2, 2, 4, 5]
+my_proc = Proc.new { |item| item.odd? }
 puts "\nmy_map"
 puts numbers.my_map  { |item| item.even? }
+puts numbers.my_map(my_proc)
 puts "\nmap"
 puts numbers.map  { |item| item.even? }
+puts numbers.map(&my_proc)
 
 puts "\n>>my_inject vs. inject"
 numbers = [1, 2, 2, 4, 5]

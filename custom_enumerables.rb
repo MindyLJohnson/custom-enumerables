@@ -46,11 +46,12 @@ module Enumerable
     count
   end
 
-  def my_map(obj=nil, &block)
-    return to_enum(:my_map) unless block_given?
+  def my_map(a_proc=nil, &block)
+    my_block = block if block_given?
+    my_block = a_proc unless block_given?
 
     arr = []
-    self.my_each { |item| arr << block.call(item) }
+    self.my_each { |item| arr << my_block.call(item) }
     arr
   end
 
