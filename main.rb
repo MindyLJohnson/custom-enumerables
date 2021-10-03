@@ -53,3 +53,10 @@ puts "\ncount"
 puts numbers.count  { |item| item.even? }
 puts numbers.count(2)
 puts numbers.count
+
+puts "\n>>my_map vs. map"
+numbers = [1, 2, 2, 4, 5]
+puts "\nmy_map"
+puts numbers.my_map  { |item| item.even? }
+puts "\nmap"
+puts numbers.map  { |item| item.even? }

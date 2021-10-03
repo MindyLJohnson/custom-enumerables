@@ -45,4 +45,12 @@ module Enumerable
     self.my_each { |item| count += 1 if item == obj } unless obj.nil?
     count
   end
+
+  def my_map(obj=nil, &block)
+    return to_enum(:my_map) unless block_given?
+
+    arr = []
+    self.my_each { |item| arr << block.call(item) }
+    arr
+  end
 end
