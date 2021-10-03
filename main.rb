@@ -29,8 +29,9 @@ puts "\nall?"
 puts numbers.all?  { |item| item.even? }
 
 puts "\n>>my_none? vs. none?"
-numbers = [2, 4, 6, 8, 10]
+numbers = [1, 3, 5, 7, 9]
 puts "\nmy_none?"
 puts numbers.my_none?  { |item| item.even? }
 puts "\nnone?"
 puts numbers.none?  { |item| item.even? }
+

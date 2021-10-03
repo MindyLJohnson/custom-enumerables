@@ -28,7 +28,14 @@ module Enumerable
 
     arr = []
     self.my_each { |item| arr << item if block.call(item) }
-
     arr == self
+  end
+
+  def my_none?(&block)
+    return to_enum(:my_all?) unless block_given?
+
+    arr = []
+    self.my_each { |item| arr << item if block.call(item) }
+    arr.length == 0
   end
 end
