@@ -47,8 +47,8 @@ module Enumerable
   end
 
   def my_map(a_proc=nil, &block)
-    my_block = block if block_given?
-    my_block = a_proc unless block_given?
+    my_block = block if block_given? && a_proc.nil?
+    my_block = a_proc unless a_proc.nil?
 
     arr = []
     self.my_each { |item| arr << my_block.call(item) }
