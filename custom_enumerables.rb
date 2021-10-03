@@ -2,8 +2,8 @@ module Enumerable
   def my_each
     return to_enum(:my_each) unless block_given?
 
-    for item in self
-      yield item
+    for obj in self
+      yield obj
     end
   end
 
@@ -23,12 +23,11 @@ module Enumerable
     arr
   end
 
-  def my_all?(&block)
-    return to_enum(:my_all?) unless block_given?
-
-    arr = []
-    self.my_each { |item| arr << item if block.call(item) }
-    arr == self
+  def my_all?(pattern=nil, &block)
+    block = Proc.new { |item| item if item } unless block_given?
+    block = Proc.new { |item| item if pattern === item } unless pattern.nil?
+    self.my_each { |item| return false unless block.call(item) }
+    true
   end
 
   def my_none?(&block)
@@ -42,9 +41,9 @@ module Enumerable
   def my_count(obj=nil, &block)
     return self.length if !block_given? && obj.nil?
 
-    arr = []
-    self.my_each { |item| arr << item if item == obj } unless obj.nil?
-    self.my_each { |item| arr << item if block.call(item) } if block_given?
-    arr.length
+    count = 0
+    self.my_each { |item| count += 1 if block.call(item) } if block_given?
+    self.my_each { |item| count += 1 if item == obj } unless obj.nil?
+    count
   end
 end
