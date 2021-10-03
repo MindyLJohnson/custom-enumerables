@@ -53,4 +53,21 @@ module Enumerable
     self.my_each { |item| arr << block.call(item) }
     arr
   end
+
+  def my_inject(*args, &block)
+    acc, sym = *args if args.length > 1 || block_given?
+    sym = args[0] if args.length == 1 && !block_given?
+
+    self.my_each do |item|
+      acc = block.call(acc, item) unless acc.nil?
+      acc = self.first if acc.nil?
+    end if block_given?
+
+    self.my_each do |item|
+      acc = item.send(sym, acc) unless acc.nil?
+      acc = self.first if acc.nil?
+    end unless block_given?
+
+    acc
+  end
 end

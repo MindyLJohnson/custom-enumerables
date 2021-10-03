@@ -60,3 +60,16 @@ puts "\nmy_map"
 puts numbers.my_map  { |item| item.even? }
 puts "\nmap"
 puts numbers.map  { |item| item.even? }
+
+puts "\n>>my_inject vs. inject"
+numbers = [1, 2, 2, 4, 5]
+puts "\nmy_inject"
+puts numbers.my_inject  { |sum, item| sum + item }
+puts numbers.my_inject(10)  { |sum, item| sum + item }
+puts numbers.my_inject(:+)
+puts numbers.my_inject(10, :+)
+puts "\ninject"
+puts numbers.inject  { |sum, item| sum + item }
+puts numbers.inject(10)  { |sum, item| sum + item }
+puts numbers.inject(:+)
+puts numbers.inject(10, :+)
