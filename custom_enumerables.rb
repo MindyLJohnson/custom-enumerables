@@ -30,12 +30,11 @@ module Enumerable
     true
   end
 
-  def my_none?(&block)
-    return to_enum(:my_all?) unless block_given?
-
-    arr = []
-    self.my_each { |item| arr << item if block.call(item) }
-    arr.length == 0
+  def my_none?(pattern=nil, &block)
+    block = Proc.new { |item| item if item } unless block_given?
+    block = Proc.new { |item| item if pattern === item } unless pattern.nil?
+    self.my_each { |item| return true unless block.call(item) }
+    false
   end
 
   def my_count(obj=nil, &block)

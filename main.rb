@@ -36,8 +36,12 @@ puts "\n>>my_none? vs. none?"
 numbers = [1, 3, 5, 7, 9]
 puts "\nmy_none?"
 puts numbers.my_none?  { |item| item.even? }
+puts numbers.my_none?(String)
+puts numbers.my_none?
 puts "\nnone?"
 puts numbers.none?  { |item| item.even? }
+puts numbers.none?(String)
+puts numbers.none?
 
 puts "\n>>my_count vs. count"
 numbers = [1, 2, 2, 4, 5]
